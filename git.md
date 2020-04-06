@@ -1,19 +1,29 @@
-## Adding SSH key to ssh-agent
-## and enable agentforward 
+## Ignore file after commit
+`git rm -cached filename`
 
-Edit .ssh/config file and add the following
+## Delete commit history
 
-```
-Host *
-  AddKeysToAgent yes
-  UseKeychain yes
-  IdentityFile ~/.ssh/id_rsa
-  
-  ForwardAgent yes
-```
-  
-  
-## Tunneling 
-```
-ssh -L 8000:localhost:8888 user@remote-server
-```
+### Checkout
+
+`git checkout --orphan latest_branch`
+
+### Add all the files
+
+`git add -A`
+
+### Commit the changes
+
+`git commit -am "commit message"`
+
+### Delete the branch
+
+`git branch -D master`
+
+### Rename the current branch to master
+
+`git branch -m master`
+
+### Finally, force update your repository
+
+`git push -f origin master`
+
