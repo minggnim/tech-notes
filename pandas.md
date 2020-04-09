@@ -8,3 +8,9 @@ data.groupby(['a', 'b'])['c'].agg(np_calc=np.sum, lambda_func=lambda x: x+10, el
 df = pd.read_csv(io.StringIO(test), header=None, sep='["]*,["]*', engine='python',skipinitialspace=True, quoting=1)
 ```
 
+## Set column width to display full content
+```
+pd.set_option('display.max_colwidth', -1)
+print(data.loc[data.col1>13000][['col2','col3']])
+pd.reset_option('display.max_colwidth')
+```
