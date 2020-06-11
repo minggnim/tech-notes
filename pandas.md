@@ -14,3 +14,13 @@ pd.set_option('display.max_colwidth', -1)
 print(data.loc[data.col1>13000][['col2','col3']])
 pd.reset_option('display.max_colwidth')
 ```
+
+## Dask & multiprocessing for parallel processing when some_func() is expensive to run
+```
+import dask.dataframe as dd
+import multiprocessing
+
+ddf = dd.from_pandas(df, npartitions=4*multiprocessing.cpu_count()) \
+        .map_partitions(lambda df: df.apply(lambda row: some_func(row.a, row.b), axis=1)) \
+        .compute(scheduler='processes')
+```
