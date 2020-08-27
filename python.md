@@ -21,7 +21,10 @@ class color:
 ```python
 list_ids = tuple(df.list_ids)
 query = f'''
-select *
-from table
-where id_column in {list_ids}
+         select *
+         from table
+         where id_column in {list_ids}
+         '''
+
+df = pd.read_sql_query(query, conn)
 '''
