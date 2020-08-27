@@ -17,3 +17,11 @@ class color:
    UNDERLINE = '\033[4m'
    END = '\033[0m'
 ```
+
+```python
+list_ids = tuple(df.list_ids)
+query = f'''
+select *
+from table
+where id_column in {list_ids}
+'''
